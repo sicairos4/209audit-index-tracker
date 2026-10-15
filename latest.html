@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Latest from 209 Media — 209Audit Tracker</title>
+<style>body{font:16px/1.5 Arial,sans-serif;max-width:850px;margin:30px auto;padding:0 20px;color:#182536;background:#f3f6fa}h1{color:#123b63}.item{background:#fff;border:1px solid #d9e2eb;border-radius:12px;padding:14px;margin:10px 0}.muted{color:#5d6a79;font-size:13px}a{color:#2878ae}</style>
+</head>
+<body>
+<h1>Latest from 209 Media</h1>
+<div id="records"><p class="muted">Loading records…</p></div>
+<p><a href="index.html">Back to Master Tracker</a> • <a href="https://sicairos4.github.io/david-sicairos-site/">209 Media</a></p>
+<script>
+(async function(){
+try{
+const res=await fetch('https://raw.githubusercontent.com/sicairos4/david-sicairos-site/main/data/site-config.json');
+const cfg=await res.json();
+const r=cfg.records||[];
+document.getElementById('records').innerHTML=r.length?r.map(x=>'<div class="item"><strong>'+x.headline+'</strong><br><span class="muted">'+x.date+' • '+x.source+'</span><br><a href="https://sicairos4.github.io/david-sicairos-site/'+x.link+'">Open on 209 Media</a></div>').join(''):'<p class="muted">No records yet.</p>';
+}catch(e){document.getElementById('records').innerHTML='<p class="muted">Records unavailable.</p>'}
+})();
+</script>
+</body>
+</html>
